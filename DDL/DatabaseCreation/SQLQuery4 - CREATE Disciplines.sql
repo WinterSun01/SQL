@@ -63,8 +63,8 @@ BEGIN
 END
 GO
 
---IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'TeacherDisciplinesRelation')
---BEGIN
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'TeacherDisciplinesRelation')
+BEGIN
 	CREATE TABLE TeacherDisciplinesRelation
 	(
 		teacher			INT,
@@ -73,11 +73,11 @@ GO
 		CONSTRAINT	FK_TDR_Teacher		FOREIGN KEY (teacher)	REFERENCES Teachers(teacher_id),
 		CONSTRAINT	FK_TDR_Discipline	FOREIGN KEY	(discipline)REFERENCES Disciplines(discipline_id)
 	);
---END
+END
 GO
 
---IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'CompleteDisciplines')
---BEGIN
+IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = N'CompleteDisciplines')
+BEGIN
 	CREATE TABLE CompleteDisciplines
 	(
 		[group]			INT,
@@ -86,5 +86,5 @@ GO
 		CONSTRAINT	FK_CompleteDiscipline_Droups	FOREIGN KEY ([group])	REFERENCES Groups(group_id),
 		CONSTRAINT	FK_CompleteDiscipline_for_Group	FOREIGN KEY (discipline)REFERENCES Disciplines(discipline_id)
 	);
---END
+END
 GO
