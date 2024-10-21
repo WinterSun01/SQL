@@ -22,41 +22,35 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="SQLQuery1.sql">
+        <FileNode Name="SQLQuery1 - CREATE DATABASE.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:HONEY_BEE\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>HONEY_BEE\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery1.sql</FullPath>
+          <FullPath>SQLQuery1 - CREATE DATABASE.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery2.sql">
+        <FileNode Name="SQLQuery2 - CREATE TABLES.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:HONEY_BEE\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>HONEY_BEE\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery2.sql</FullPath>
+          <FullPath>SQLQuery2 - CREATE TABLES.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery3.sql">
+        <FileNode Name="SQLQuery3 - CREATE TEACHERS.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:HONEY_BEE\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>HONEY_BEE\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery3.sql</FullPath>
+          <FullPath>SQLQuery3 - CREATE TEACHERS.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery4.sql">
+        <FileNode Name="SQLQuery4 - CREATE DISCIPLINES.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:HONEY_BEE\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>HONEY_BEE\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery4.sql</FullPath>
+          <FullPath>SQLQuery4 - CREATE DISCIPLINES.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery5.sql">
+        <FileNode Name="SQLQuery5 - CREATE SCHEDULE.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:HONEY_BEE\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>HONEY_BEE\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery5.sql</FullPath>
-        </FileNode>
-        <FileNode Name="SQLQuery6.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:HONEY_BEE\SQLEXPRESS:True</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>HONEY_BEE\SQLEXPRESS</AssociatedConnSrvName>
-          <AssociatedConnUserName />
-          <FullPath>SQLQuery6.sql</FullPath>
+          <FullPath>SQLQuery5 - CREATE SCHEDULE.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
