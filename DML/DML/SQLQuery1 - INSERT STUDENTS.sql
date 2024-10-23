@@ -2,8 +2,9 @@ USE PD_311_DDL;
 GO
 
 INSERT	Students
-		(last_name,		first_name,		middle_name,		birth_date, [group])
+		(last_name, first_name, middle_name, birth_date, [group])
 VALUES	
+		(N'Сивков',		N'Никита',		N'Сергеевич',		'1992-10-09', 3),
 		(N'Тарлавина',	N'Мария',		N'Александровна',	'2001-05-14', 3),
 		(N'Ким',		N'Александр',	N'Вячеславович',	'2000-08-07', 3),
 		(N'Колпаков',	N'Кирилл',		N'Алексеевич',		'2007-09-15', 3),
@@ -25,4 +26,15 @@ VALUES
 		(N'Моисеев',	N'Дмитрий',		N'Витальевич',		'2001-07-23', 8),
 		(N'Пластинин',	N'Андрей',		N'Владимирович',	'1979-04-20', 8),
 		(N'Терещенков',	N'Станислав',	N'Евгеньевич',		'1985-06-10', 8),
-		(N'Хорев',		N'Алексей',		N'Петрович',		'1977-06-09', 8),
+		(N'Хорев',		N'Алексей',		N'Петрович',		'1977-06-09', 8);
+
+--чтобы постоянно не дублировалось при нажатиях Execute:
+WITH CTE AS
+(
+    SELECT *,
+    ROW_NUMBER() OVER (PARTITION BY last_name, first_name, middle_name, birth_date ORDER BY student_id) AS rn
+    FROM dbo.Students
+)
+DELETE FROM CTE
+WHERE rn > 1;
+GO
