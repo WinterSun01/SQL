@@ -1,6 +1,8 @@
 USE PD_311_DDL; 
 GO
 
+--DECLARE нужен для объявления переменной
+
 DECLARE @start_date AS DATE = '2023-11-27';
 DECLARE @date AS DATE = @start_date;
 DECLARE @time AS TIME = '14:30';
