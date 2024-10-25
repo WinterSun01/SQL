@@ -68,7 +68,7 @@ CREATE PROC sp_AddScheduleForStacionarGroup
 @teacher_last_name NVARCHAR(150)
 AS
 BEGIN
-    DECLARE @date AS DATE = @start_date;   ---DECLARE нужно для объявления переменной
+    DECLARE @date AS DATE = @start_date;   
     DECLARE @time AS TIME = @group_time;
     DECLARE @group AS INT = (SELECT group_id FROM Groups WHERE group_name = @group_name);
     DECLARE @discipline AS SMALLINT = (SELECT discipline_id FROM Disciplines WHERE discipline_name LIKE @discipline_name);
