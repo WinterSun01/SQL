@@ -54,36 +54,42 @@ GO
 --END
 GO
 
+------чтобы не было ошибки "уже существует в базе данных":
+IF OBJECT_ID('sp_AddScheduleForStacionarGroup', 'P') IS NOT NULL
+    DROP PROCEDURE sp_AddScheduleForStacionarGroup;
+GO
+------
+
 CREATE PROC sp_AddScheduleForStacionarGroup
 @start_date DATE,
 @group_time TIME,
 @group_name NVARCHAR(50),
-@discipline_name NVARCHAR(256),
+@discipline_name NVARCHAR(256), 
 @teacher_last_name NVARCHAR(150)
 AS
 BEGIN
-	DECLARE @date AS DATE = @start_date;
-	DECLARE @time AS TIME = @group_time;
-	DECLARE @group AS INT = (SELECT group_id FROM Groups WHERE group_name = @group_name);
-	DECLARE @discipline AS SMALLINT = (SELECT discipline_id FROM Disciplines WHERE discipline_name LIKE @discipline_name);
-	DECLARE @number_of_lessons AS SMALLINT = (SELECT number_of_lessons FROM Disciplines WHERE discipline_id = @discipline);
-	DECLARE @teacher AS INT = (SELECT teacher_id FROM Teachers WHERE last_name = @teacher_last_name);
+    DECLARE @date AS DATE = @start_date;
+    DECLARE @time AS TIME = @group_time;
+    DECLARE @group AS INT = (SELECT group_id FROM Groups WHERE group_name = @group_name);
+    DECLARE @discipline AS SMALLINT = (SELECT discipline_id FROM Disciplines WHERE discipline_name LIKE @discipline_name);
+    DECLARE @number_of_lessons AS SMALLINT = (SELECT number_of_lessons FROM Disciplines WHERE discipline_id = @discipline);
+    DECLARE @teacher AS INT = (SELECT teacher_id FROM Teachers WHERE last_name = @teacher_last_name);
 
-	DECLARE @lesson AS SMALLINT = 0;
-	WHILE @lesson < @number_of_lessons
-	BEGIN
-		INSERT INTO Schedule ([date], [time], [group], discipline, teacher, spent)
-		VALUES (@date, @time, @group, @discipline, @teacher, IIF(@date < GETDATE(), 1, 0));
-		SET @lesson = @lesson + 1;
-		
-		IF @lesson < @number_of_lessons
-		BEGIN
-			INSERT INTO Schedule ([date], [time], [group], discipline, teacher, spent)
-			VALUES (@date, DATEADD(MINUTE, 90, @time), @group, @discipline, @teacher, IIF(@date < GETDATE(), 1, 0));
-			SET @lesson = @lesson + 1;
-		END
-		
-		SET @date = DATEADD(DAY, IIF(DATEPART(WEEKDAY, @date) = 6, 3, 2), @date);
-	END
+    DECLARE @lesson AS SMALLINT = 0;
+    WHILE @lesson < @number_of_lessons
+    BEGIN
+        INSERT INTO Schedule ([date], [time], [group], discipline, teacher, spent)
+        VALUES (@date, @time, @group, @discipline, @teacher, IIF(@date < GETDATE(), 1, 0));
+        SET @lesson = @lesson + 1;
+
+        IF @lesson < @number_of_lessons
+        BEGIN
+            INSERT INTO Schedule ([date], [time], [group], discipline, teacher, spent)
+            VALUES (@date, DATEADD(MINUTE, 90, @time), @group, @discipline, @teacher, IIF(@date < GETDATE(), 1, 0));
+            SET @lesson = @lesson + 1;
+        END
+
+        SET @date = DATEADD(DAY, IIF(DATEPART(WEEKDAY, @date) = 6, 3, 2), @date);
+    END
 END
 GO
