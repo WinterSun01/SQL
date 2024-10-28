@@ -1,6 +1,11 @@
 USE PD_311_2;
 GO
 
+--удаление существующей процедуры, если она уже есть
+IF OBJECT_ID('sp_AddAlternatingDisciplineToSchedule', 'P') IS NOT NULL
+    DROP PROCEDURE sp_AddAlternatingDisciplineToSchedule;
+GO
+
 --DROP PROCEDURE		sp_AddAlternatingDisciplineToSchedule;
 --GO
 
